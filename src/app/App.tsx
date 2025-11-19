@@ -3,15 +3,21 @@ import './styles/index.scss';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Navbar } from 'widgets/Navbar';
 import { AppRouter } from './providers/router';
+import { Suspense } from 'react';
+import { Sidebar } from 'widgets/Sidebar';
 
 const App = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme } = useTheme();
 
     return (
         <div className={`${classNames('app', {}, [theme])}`}>
-            <Navbar />
-            <AppRouter />
-            <button onClick={toggleTheme}>Toggle theme</button>
+            <Suspense fallback="">
+                <Navbar />
+                <div className='content-page'>
+                    <Sidebar />
+                    <AppRouter />
+                </div>
+            </Suspense>
         </div>
     );
 }
