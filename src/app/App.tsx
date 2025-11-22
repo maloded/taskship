@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import './styles/index.scss';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Navbar } from 'widgets/Navbar';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Sidebar } from 'widgets/Sidebar';
 import { AppRouter } from './providers/router';
 

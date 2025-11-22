@@ -1,6 +1,9 @@
 {
   "About": "About",
   "Main": "Main",
+  "Page not found": "Page not found",
+  "Reload the page": "Reload the page",
+  "Some Error": "SomeError",
   "lang": "en",
   "toggle": "toggle"
 }
