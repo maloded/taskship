@@ -1,5 +1,3 @@
-
-
 export type BuildMode = 'development' | 'production';
 
 export interface BuildPaths {

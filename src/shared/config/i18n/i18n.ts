@@ -4,27 +4,27 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
 
 i18n
-  .use(HttpApi)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    supportedLngs: ['en', 'ua'],
-    fallbackLng: 'en',
-    debug: __IS_DEV__,
-    detection: {
-      order: ['path', 'cookie', 'htmlTag'],
-      caches: ['cookie'],
-    },
-    backend: {
-      loadPath: '/locales/{{lng}}/{{ns}}.json',
-        parse: (data: string) => {
-        const json = JSON.parse(data);
-        return json.translation ? json.translation : json;
-      },
-    },
-    react: {
-      useSuspense: false,
-    },
-  });
+    .use(HttpApi)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+        supportedLngs: ['en', 'ua'],
+        fallbackLng: 'en',
+        debug: __IS_DEV__,
+        detection: {
+            order: ['path', 'cookie', 'htmlTag'],
+            caches: ['cookie'],
+        },
+        backend: {
+            loadPath: '/locales/{{lng}}/{{ns}}.json',
+            parse: (data: string) => {
+                const json = JSON.parse(data);
+                return json.translation ? json.translation : json;
+            },
+        },
+        react: {
+            useSuspense: false,
+        },
+    });
 
 export default i18n;
