@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import MiniCssExtractPlugin, { loader } from 'mini-css-extract-plugin';
+import { loader } from 'mini-css-extract-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
@@ -11,7 +11,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     const cssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
-            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            isDev ? 'style-loader' : loader,
             {
                 loader: 'css-loader',
                 options: {
