@@ -47,4 +47,12 @@ module.exports = {
     globals: {
         __IS_DEV__: true,
     },
+    overrides: [
+        {
+            files: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            }
+        }
+    ]
 };
