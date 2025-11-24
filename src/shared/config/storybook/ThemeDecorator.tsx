@@ -1,0 +1,11 @@
+import { type StoryFn } from '@storybook/react';
+import { ThemeProvider } from 'app/providers/ThemeProvider';
+import { Theme } from 'app/providers/ThemeProvider/lib/ThemeContext';
+
+export const ThemeDecorator = (theme: Theme) => (Story: StoryFn) => (
+    <ThemeProvider>
+        <div className={`app ${theme}`}>
+            <Story />
+        </div>
+    </ThemeProvider>
+);

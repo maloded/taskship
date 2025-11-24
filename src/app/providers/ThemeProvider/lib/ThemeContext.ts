@@ -1,13 +1,13 @@
 import { createContext } from 'react';
 
 export enum Theme {
-  DAY = 'day',
-  NIGHT = 'night',
+    DAY = 'day',
+    NIGHT = 'night',
 }
 
 export interface ThemeContextProps {
-  theme?: Theme;
-  setTheme?: (theme: Theme) => void;
+    theme?: Theme;
+    setTheme?: (theme: Theme) => void;
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({});

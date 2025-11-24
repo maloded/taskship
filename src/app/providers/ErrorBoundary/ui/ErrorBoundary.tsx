@@ -10,7 +10,10 @@ interface ErrorBoundaryState {
     hasError: boolean;
 }
 
-class ErrorBarrier extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBarrier extends React.Component<
+    ErrorBoundaryProps,
+    ErrorBoundaryState
+> {
     constructor(props: ErrorBoundaryProps) {
         super(props);
         this.state = { hasError: false };
@@ -29,7 +32,11 @@ class ErrorBarrier extends React.Component<ErrorBoundaryProps, ErrorBoundaryStat
         const { children } = this.props;
 
         if (hasError) {
-            return <Suspense fallback={<Loader />}><PageError /></Suspense>;
+            return (
+                <Suspense fallback={<Loader />}>
+                    <PageError />
+                </Suspense>
+            );
         }
 
         return children;

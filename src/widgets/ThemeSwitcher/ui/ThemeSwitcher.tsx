@@ -18,7 +18,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
             className={classNames(cls.themeSwitcher, {}, [className])}
             theme={ThemeButton.CLEAR}
         >
-            { theme === Theme.DAY ? <NightIcon /> : <DayIcon /> }
+            {theme === Theme.DAY ? <NightIcon /> : <DayIcon />}
         </Button>
     );
 };

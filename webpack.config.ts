@@ -2,7 +2,10 @@ import path from 'path';
 import webpack from 'webpack';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 import {
-    BuildEnv, BuildMode, BuildOptions, BuildPaths,
+    BuildEnv,
+    BuildMode,
+    BuildOptions,
+    BuildPaths,
 } from './config/build/types/config';
 
 export default (env: BuildEnv) => {

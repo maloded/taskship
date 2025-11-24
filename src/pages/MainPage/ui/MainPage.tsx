@@ -8,7 +8,6 @@ const MainPage = () => {
             {t('Main Page')}
             {t('Hello World')}
             {t('Hello')}
-
         </div>
     );
 };
