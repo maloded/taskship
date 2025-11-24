@@ -1,0 +1,57 @@
+name: Linting, testing, building pipeline
+run-name: ${{ github.actor }} is running out GitHub Actions 🚀
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+permissions:
+    contents: write
+    pages: write
+    id-token: write
+concurrency:
+    group: 'pages'
+    cancel-in-progress: true
+jobs:
+    build-and-report-testing:
+        runs-on: ubuntu-latest
+        concurrency: ci-${{ github.ref }}
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        strategy:
+            matrix:
+                node-version: [17.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Staring Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: install modules
+              run: npm ci --force
+            - name: build production project
+              run: npm run build:prod
+              if: always()
+            - name: unit testing
+              if: always()
+              run: npm run unit
+
+    checks:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [17.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Staring Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: install modules
+              run: npm ci --force
+            - name: linting typescript
+              run: npm run lint:ts
+              if: always()
+            - name: linting css
+              run: npm run lint:scss
